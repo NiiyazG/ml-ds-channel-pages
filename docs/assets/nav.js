@@ -1,6 +1,6 @@
 // Navigation bar injected into lesson pages
 (function(){
-  if(document.querySelector('.top-nav-injected') || document.querySelector('.top-nav')) return;
+  if(document.querySelector('.top-nav-injected')) return;
 
   var nav = document.createElement('nav');
   nav.className = 'top-nav top-nav-injected';
