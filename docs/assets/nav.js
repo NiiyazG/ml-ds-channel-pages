@@ -52,12 +52,14 @@
     '</div>';
   document.body.appendChild(navBlock);
 
-  // Add copyright footer
-  var footer = document.createElement('div');
-  footer.style.cssText = 'max-width:1200px;margin:0 auto;padding:20px 24px 40px;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;border-top:1px solid rgba(255,255,255,.06)';
+  // Add copyright footer (fixed, same as main page)
+  var footer = document.createElement('footer');
+  footer.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:center;padding:10px 32px;border-top:1px solid rgba(255,255,255,.06);background:rgba(10,10,18,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)';
   footer.innerHTML = '<span style="font-size:.75rem;font-weight:400;color:#ffffff;opacity:.45">© Гарипов Нияз Варисович</span>' +
     '<a href="https://t.me/ML_DS_one" style="font-size:.72rem;color:#3481B8;text-decoration:none" target="_blank">https://t.me/ML_DS_one</a>';
   document.body.appendChild(footer);
+  // Add body padding so content doesn't overlap footer
+  document.body.style.paddingBottom = '60px';
 
   // Search functionality
   var lessons = [
