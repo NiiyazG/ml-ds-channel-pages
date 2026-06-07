@@ -33,6 +33,7 @@
     '.top-nav-injected .search-wrap input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px;font-size:.85rem;color:#9898b0;width:160px;outline:none;transition:all .2s;font-family:inherit}' +
     '.top-nav-injected .search-wrap input::placeholder{color:#585870}' +
     '.top-nav-injected .search-wrap input:focus{border-color:rgba(52,129,184,.4);background:rgba(255,255,255,.08);width:200px}' +
+    '.md-sidebar--primary .md-nav{max-height:calc(100vh - 200px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.06) transparent}' +
     '';
 
   document.head.appendChild(style);
