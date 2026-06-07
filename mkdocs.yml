@@ -5,6 +5,9 @@ theme:
   language: ru
 plugins:
   - search
+extra_css:
+  - stylesheets/quick-nav.css
+
 markdown_extensions:
   - admonition
   - tables
