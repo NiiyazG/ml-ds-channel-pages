@@ -6,6 +6,11 @@ theme:
 plugins:
   - search
 
+nav:
+  - Главная: index.md
+  - Профессиональный профиль: profile.md
+  - Telegram: 'https://t.me/ML_DS_one'
+
 extra:
   social:
     - icon: fontawesome/brands/telegram
