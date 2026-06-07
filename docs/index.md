@@ -1,94 +1,17 @@
 <div class="quick-nav">
-<div class="nav-range">
-<span class="range-label">1–10:</span>
-<a href="#урок-1" class="nav-btn">1</a>
-<a href="#урок-2" class="nav-btn">2</a>
-<a href="#урок-3" class="nav-btn">3</a>
-<a href="#урок-4" class="nav-btn">4</a>
-<a href="#урок-5" class="nav-btn">5</a>
-<a href="#урок-6" class="nav-btn">6</a>
-<a href="#урок-7" class="nav-btn">7</a>
-<a href="#урок-8" class="nav-btn">8</a>
-<a href="#урок-9" class="nav-btn">9</a>
-<a href="#урок-10" class="nav-btn">10</a>
-</div>
-<div class="nav-range">
-<span class="range-label">11–20:</span>
-<a href="#урок-11" class="nav-btn">11</a>
-<a href="#урок-12" class="nav-btn">12</a>
-<a href="#урок-13" class="nav-btn">13</a>
-<a href="#урок-14" class="nav-btn">14</a>
-<a href="#урок-15" class="nav-btn">15</a>
-<a href="#урок-16" class="nav-btn">16</a>
-<a href="#урок-17" class="nav-btn">17</a>
-<a href="#урок-18" class="nav-btn">18</a>
-<a href="#урок-19" class="nav-btn">19</a>
-<a href="#урок-20" class="nav-btn">20</a>
-</div>
-<div class="nav-range">
-<span class="range-label">21–30:</span>
-<a href="#урок-21" class="nav-btn">21</a>
-<a href="#урок-22" class="nav-btn">22</a>
-<a href="#урок-23" class="nav-btn">23</a>
-<a href="#урок-24" class="nav-btn">24</a>
-<a href="#урок-25" class="nav-btn">25</a>
-<a href="#урок-26" class="nav-btn">26</a>
-<a href="#урок-27" class="nav-btn">27</a>
-<a href="#урок-28" class="nav-btn">28</a>
-<a href="#урок-29" class="nav-btn">29</a>
-<a href="#урок-30" class="nav-btn">30</a>
-</div>
-<div class="nav-range">
-<span class="range-label">31–40:</span>
-<a href="#урок-31" class="nav-btn">31</a>
-<a href="#урок-32" class="nav-btn">32</a>
-<a href="#урок-33" class="nav-btn">33</a>
-<a href="#урок-34" class="nav-btn">34</a>
-<a href="#урок-35" class="nav-btn">35</a>
-<a href="#урок-36" class="nav-btn">36</a>
-<a href="#урок-37" class="nav-btn">37</a>
-<a href="#урок-38" class="nav-btn">38</a>
-<a href="#урок-39" class="nav-btn">39</a>
-<a href="#урок-40" class="nav-btn">40</a>
-</div>
-<div class="nav-range">
-<span class="range-label">41–50:</span>
-<a href="#урок-41" class="nav-btn">41</a>
-<a href="#урок-42" class="nav-btn">42</a>
-<a href="#урок-43" class="nav-btn">43</a>
-<a href="#урок-44" class="nav-btn">44</a>
-<a href="#урок-45" class="nav-btn">45</a>
-<a href="#урок-46" class="nav-btn">46</a>
-<a href="#урок-47" class="nav-btn">47</a>
-<a href="#урок-48" class="nav-btn">48</a>
-<a href="#урок-49" class="nav-btn">49</a>
-<a href="#урок-50" class="nav-btn">50</a>
-</div>
-<div class="nav-range">
-<span class="range-label">51–60:</span>
-<a href="#урок-51" class="nav-btn">51</a>
-<a href="#урок-52" class="nav-btn">52</a>
-<a href="#урок-53" class="nav-btn">53</a>
-<a href="#урок-54" class="nav-btn">54</a>
-<a href="#урок-55" class="nav-btn">55</a>
-<a href="#урок-56" class="nav-btn">56</a>
-<a href="#урок-57" class="nav-btn">57</a>
-<a href="#урок-58" class="nav-btn">58</a>
-<a href="#урок-59" class="nav-btn">59</a>
-<a href="#урок-60" class="nav-btn">60</a>
-</div>
-<div class="nav-range">
-<span class="range-label">61–70:</span>
-<a href="#урок-61" class="nav-btn">61</a>
-<a href="#урок-62" class="nav-btn">62</a>
-<a href="#урок-63" class="nav-btn">63</a>
-<a href="#урок-64" class="nav-btn">64</a>
-<a href="#урок-65" class="nav-btn">65</a>
-<a href="#урок-66" class="nav-btn">66</a>
-<a href="#урок-67" class="nav-btn">67</a>
-<a href="#урок-68" class="nav-btn">68</a>
-<a href="#урок-69" class="nav-btn">69</a>
-<a href="#урок-70" class="nav-btn">70</a>
+<div class="nav-range" style="flex-wrap: nowrap; overflow-x: auto; white-space: nowrap;">
+<a href="#урок-1" class="nav-btn" style="flex-shrink:0">1–5: Основы анализа данных</a>
+<a href="#урок-6" class="nav-btn" style="flex-shrink:0">6–9: Статистика и разброс</a>
+<a href="#урок-10" class="nav-btn" style="flex-shrink:0">10–12: Меры и ML мышление</a>
+<a href="#урок-13" class="nav-btn" style="flex-shrink:0">13–16: Распределения и ЦПТ</a>
+<a href="#урок-17" class="nav-btn" style="flex-shrink:0">17–21: Связи данных</a>
+<a href="#урок-22" class="nav-btn" style="flex-shrink:0">22–26: Классификация и деревья</a>
+<a href="#урок-27" class="nav-btn" style="flex-shrink:0">27–33: Ансамбли и оценка</a>
+<a href="#урок-34" class="nav-btn" style="flex-shrink:0">34–38: Feature Engineering</a>
+<a href="#урок-39" class="nav-btn" style="flex-shrink:0">39–43: Оценка модели</a>
+<a href="#урок-44" class="nav-btn" style="flex-shrink:0">44–46: Ошибки мышления</a>
+<a href="#урок-47" class="nav-btn" style="flex-shrink:0">47–55: Градиентный спуск и регрессия</a>
+<a href="#урок-56" class="nav-btn" style="flex-shrink:0">56–70: SQL для аналитика</a>
 </div>
 </div>
 ![ML & DS](images/profile/hero.jpg)
