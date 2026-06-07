@@ -1,8 +1,19 @@
 site_name: ML и анализ данных по-человечески
-site_description: Материалы канала в формате сайта
+site_description: Премиальный образовательный ресурс по анализу данных и машинному обучению
+copyright: © Гарипов Нияз Варисович
 theme:
   name: material
   language: ru
+  palette:
+    scheme: default
+    primary: custom
+    accent: custom
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.tracking
+
 plugins:
   - search
 
@@ -16,12 +27,17 @@ extra:
     - icon: fontawesome/brands/telegram
       title: ML и анализ данных по-человечески
       link: https://t.me/ML_DS_one
+    - icon: fontawesome/brands/github
+      title: GitHub
+      link: https://github.com/NiiyazG/ml-ds-channel-pages
 
 extra_css:
-  - stylesheets/quick-nav.css
+  - stylesheets/premium.css
 
 markdown_extensions:
   - admonition
   - tables
   - toc:
       permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
