@@ -4,7 +4,7 @@
 
   var nav = document.createElement('nav');
   nav.className = 'top-nav top-nav-injected';
-  nav.innerHTML = '<div class="logo">ML и анализ данных по-человечески</div>' +
+  nav.innerHTML = '<div class="logo"><a href="../../lessons/001-тема-1-что-такое-анализ-данных-и-зачем-он-нужен/" style="color:inherit;text-decoration:none">ML и анализ данных по-человечески</a></div>' +
     '<div class="nav-links">' +
     '<a href="../../">Главная</a>' +
     '<a href="../../lessons/001-тема-1-что-такое-анализ-данных-и-зачем-он-нужен/">Уроки</a>' +
