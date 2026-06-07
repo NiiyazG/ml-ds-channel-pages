@@ -12,7 +12,7 @@
     '</div>' +
     '<a href="../../" class="active">Главная</a>' +
     '<a href="../../profile/">Обо мне</a>' +
-    '<a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">✈️ Телеграм-канал</a>' +
+    '<a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">Телеграм-канал</a>' +
     '</div>';
 
   var first = document.body.firstChild;
