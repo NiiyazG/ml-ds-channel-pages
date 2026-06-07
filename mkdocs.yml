@@ -5,6 +5,13 @@ theme:
   language: ru
 plugins:
   - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/telegram
+      title: ML и анализ данных по-человечески
+      link: https://t.me/ML_DS_one
+
 extra_css:
   - stylesheets/quick-nav.css
 
