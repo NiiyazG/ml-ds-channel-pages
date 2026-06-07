@@ -12,7 +12,7 @@
     '</div>' +
     '<a href="../../" class="active">Главная</a>' +
     '<a href="../../profile/">Обо мне</a>' +
-    '<a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">✈️ Telegram</a>' +
+    '<a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">✈️ Телеграм-канал</a>' +
     '</div>';
 
   var first = document.body.firstChild;
@@ -26,7 +26,7 @@
     '.top-nav-injected .nav-links a{color:#9898b0;text-decoration:none;font-size:.85rem;font-weight:500;padding:6px 14px;border-radius:8px;transition:all .2s}' +
     '.top-nav-injected .nav-links a:hover{color:#e8e8f0;background:rgba(255,255,255,.05)}' +
     '.top-nav-injected .nav-links a.active{color:#fff;background:rgba(21,72,137,.15)}' +
-    '.top-nav-injected .nav-links .tg-btn{background:linear-gradient(135deg,#3481B8,#2673A8);color:#fff !important;padding:6px 16px;border-radius:8px;font-weight:600}' +
+    '.top-nav-injected .nav-links .tg-btn{background:linear-gradient(135deg,#3481B8,#2673A8);color:#fff !important;padding:6px 20px;border-radius:8px;font-weight:600}' +
     '.top-nav-injected .search-wrap{position:relative;margin-right:8px}' +
     '.top-nav-injected .search-wrap input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px 6px 32px;font-size:.78rem;color:#e8e8f0;width:160px;outline:none;transition:all .2s;font-family:inherit}' +
     '.top-nav-injected .search-wrap input::placeholder{color:#585870}' +
