@@ -68,6 +68,27 @@
       text-align:center;
       margin-top:4px;
     }
+    .photo-col .lesson-nav{
+      width:100%;
+      margin-top:20px;
+      border-top:1px solid rgba(255,255,255,.06);
+      padding-top:12px;
+      overflow-y:auto;
+      flex:1;
+    }
+    .photo-col .lesson-nav a{
+      display:block;
+      padding:5px 8px;
+      color:#9898b0;
+      text-decoration:none;
+      font-size:.72rem;
+      border-radius:4px;
+      transition:all .15s;
+    }
+    .photo-col .lesson-nav a:hover{
+      color:#e8e8f0;
+      background:rgba(255,255,255,.04);
+    }
 
     /* === Right content column === */
     .content-col{
@@ -324,6 +345,7 @@
     </div>
     </a>
     <div class="photo-role" style="margin-top:0">Data Science, ML &amp; AI</div>
+    <div id="lessonNav" class="lesson-nav"></div>
   </div>
 
   <!-- Right: Content Column -->
@@ -427,6 +449,16 @@
     {n:69, title:'Урок 69', url:'lessons/069-ml-и-анализ-данных-урок-69/'},
     {n:70, title:'Агрегатные оконные функции SUM OVER, AVG OVER', url:'lessons/070-тема-70-агрегатные-оконные-функции-sum-over-avg-over/'}
   ];
+
+  // Populate lesson nav in left column
+  var navEl = document.getElementById('lessonNav');
+  if(navEl){
+    var html = '<div style="font-size:.75rem;color:#585870;margin-bottom:8px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">📚 Все уроки курса</div>';
+    lessons.forEach(function(l){
+      html += '<a href="'+l.url+'">Урок '+l.n+'. '+l.title+'</a>';
+    });
+    navEl.innerHTML = html;
+  }
 
   const input = document.getElementById('searchInput');
   const results = document.createElement('div');
