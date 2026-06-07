@@ -43,12 +43,13 @@
   var navBlock = document.createElement('div');
   navBlock.style.cssText = 'max-width:1200px;margin:40px auto 0;padding:20px 24px 0;';
   navBlock.innerHTML = '<div style="font-size:.85rem;font-weight:700;color:#e8e8f0;margin-bottom:12px">Все уроки курса</div>' +
-    '<div style="display:flex;flex-wrap:wrap;gap:6px 12px">' +
+    '<div style="max-height:300px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.06) transparent">' +
     lessons.map(function(l){
       return '<a href="'+l.url+'" style="color:#9898b0;text-decoration:none;font-size:.78rem;padding:2px 0;border-bottom:1px solid transparent;transition:all .2s" onmouseover="this.style.color=\'#3481B8\';this.style.borderBottomColor=\'#3481B8\'" onmouseout="this.style.color=\'#9898b0\';this.style.borderBottomColor=\'transparent\'">' +
         '<span style="color:#3481B8;font-weight:600">Урок '+l.n+'</span> — '+l.title+
       '</a>';
     }).join('') +
+    '</div>' +
     '</div>';
   document.body.appendChild(navBlock);
 
