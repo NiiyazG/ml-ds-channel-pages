@@ -1,603 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML и анализ данных по-человечески</title>
+  <meta name="description" content="Авторский курс по анализу данных, ML, SQL и BI от Гарипова Нияза Варисовича. Понятные объяснения, реальные примеры, никакой воды.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+      background:#0a0a12;
+      color:#e8e8f0;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
 
-<!doctype html>
-<html lang="ru" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="Премиальный образовательный ресурс по анализу данных и машинному обучению">
-      
-      
-      
-      
-      
-        <link rel="next" href="profile/">
-      
-      
-        
-      
-      
-      <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
-    
-    
-      
-        <title>ML и анализ данных по-человечески</title>
-      
-    
-    
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
-      
-        
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
-      
-      
+    /* === Background effects === */
+    body::before{
+      content:'';
+      position:fixed;
+      top:-50%;
+      left:-50%;
+      width:200%;
+      height:200%;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(255,107,53,.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,184,148,.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(116,185,255,.08) 0%, transparent 50%);
+      z-index:-1;
+      pointer-events:none;
+    }
 
+    /* === Navigation === */
+    .top-nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 24px;
+      max-width:1200px;
+      margin:0 auto;
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(10,10,18,.7);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .top-nav .logo{
+      font-weight:800;
+      font-size:1.15rem;
+      background:linear-gradient(135deg,#ff6b35,#f83600);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      letter-spacing:-.03em;
+    }
+    .top-nav .nav-links{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .top-nav .nav-links a{
+      color:#9898b0;
+      text-decoration:none;
+      font-size:.85rem;
+      font-weight:500;
+      padding:6px 14px;
+      border-radius:8px;
+      transition:all .2s;
+    }
+    .top-nav .nav-links a:hover{color:#e8e8f0;background:rgba(255,255,255,.05)}
+    .top-nav .nav-links a.active{color:#fff;background:rgba(255,107,53,.15)}
+    .top-nav .nav-links .tg-btn{
+      background:linear-gradient(135deg,#ff6b35,#f83600);
+      color:#fff !important;
+      padding:6px 16px;
+      border-radius:8px;
+      font-weight:600;
+    }
+    .top-nav .nav-links .tg-btn:hover{
+      background:linear-gradient(135deg,#f85a20,#e03000);
+      transform:scale(1.02);
+    }
 
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="stylesheets/premium.css">
-    
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
+    /* === Hero === */
+    .hero{
+      padding:60px 24px 40px;
+      max-width:1200px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .hero .badge{
+      display:inline-block;
+      padding:4px 14px;
+      border-radius:999px;
+      background:rgba(255,107,53,.12);
+      color:#ff6b35;
+      font-size:.75rem;
+      font-weight:600;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      border:1px solid rgba(255,107,53,.2);
+    }
+    .hero h1{
+      font-size:clamp(2rem,5vw,3.5rem);
+      font-weight:900;
+      line-height:1.1;
+      letter-spacing:-.03em;
+      margin-bottom:12px;
+      background:linear-gradient(135deg,#fff 0%,#ff6b35 40%,#f83600 70%,#e8e8f0 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .hero p{
+      font-size:1.1rem;
+      color:#9898b0;
+      max-width:600px;
+      margin:0 auto 24px;
+      line-height:1.5;
+    }
+    .hero .cta-row{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .hero .cta-row a{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 28px;
+      border-radius:12px;
+      font-weight:600;
+      font-size:.9rem;
+      text-decoration:none;
+      transition:all .25s;
+    }
+    .hero .cta-primary{
+      background:linear-gradient(135deg,#ff6b35,#f83600);
+      color:#fff;
+      box-shadow:0 4px 20px rgba(255,107,53,.25);
+    }
+    .hero .cta-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 30px rgba(255,107,53,.35);
+    }
+    .hero .cta-secondary{
+      background:rgba(255,255,255,.06);
+      color:#e8e8f0;
+      border:1px solid rgba(255,255,255,.1);
+    }
+    .hero .cta-secondary:hover{
+      background:rgba(255,255,255,.1);
+      transform:translateY(-2px);
+    }
 
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
+    /* === Profile Card === */
+    .profile-card{
+      max-width:800px;
+      margin:0 auto 32px;
+      padding:24px 32px;
+      background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+    .profile-card img{
+      width:80px;height:80px;
+      border-radius:50%;
+      object-fit:cover;
+      flex-shrink:0;
+      border:2px solid rgba(255,107,53,.3);
+    }
+    .profile-card .info{flex:1}
+    .profile-card .name{font-weight:700;font-size:1.05rem;color:#fff;margin-bottom:4px}
+    .profile-card .desc{color:#9898b0;font-size:.85rem;line-height:1.5}
+    .profile-card .desc a{color:#ff6b35;text-decoration:none}
+
+    @media(max-width:600px){
+      .profile-card{flex-direction:column;text-align:center;padding:20px}
+    }
+
+    /* === Sections === */
+    .section{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 24px 40px;
+    }
+    .section-title{
+      font-size:1.3rem;
+      font-weight:700;
+      margin-bottom:16px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .section-title .accent{
+      display:inline-block;
+      width:4px;height:24px;
+      background:linear-gradient(180deg,#ff6b35,#f83600);
+      border-radius:2px;
+      flex-shrink:0;
+    }
+
+    /* === Stats Grid === */
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:12px;
+      margin-bottom:40px;
+    }
+    .stat-card{
+      padding:20px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:12px;
+      text-align:center;
+      transition:all .25s;
+    }
+    .stat-card:hover{
+      background:rgba(255,255,255,.06);
+      transform:translateY(-2px);
+      border-color:rgba(255,107,53,.2);
+    }
+    .stat-card .num{
+      font-size:1.8rem;
+      font-weight:800;
+      background:linear-gradient(135deg,#ff6b35,#f83600);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .stat-card .label{
+      font-size:.78rem;
+      color:#9898b0;
+      margin-top:4px;
+    }
+
+    /* === Lessons Grid === */
+    .lessons-grid{
+      display:grid;
+      grid-template-columns:repeat(10,1fr);
+      gap:6px;
+    }
+    .lesson-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 4px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:8px;
+      color:#9898b0;
+      text-decoration:none;
+      font-size:.78rem;
+      font-weight:500;
+      transition:all .2s;
+    }
+    .lesson-btn:hover{
+      background:rgba(255,107,53,.12);
+      border-color:rgba(255,107,53,.3);
+      color:#fff;
+      transform:translateY(-1px);
+    }
+    .lesson-btn.section-label{
+      background:transparent;
+      border:none;
+      color:#ff6b35;
+      font-weight:700;
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      cursor:default;
+      pointer-events:none;
+    }
+    .lesson-btn.section-label:hover{background:transparent;border:none;color:#ff6b35;transform:none}
+
+    @media(max-width:768px){
+      .lessons-grid{grid-template-columns:repeat(5,1fr)}
+    }
+    @media(max-width:480px){
+      .lessons-grid{grid-template-columns:repeat(3,1fr)}
+    }
+
+    /* === Section row for nav groups === */
+    .nav-group{
+      margin-bottom:24px;
+    }
+    .nav-group .group-title{
+      font-size:.75rem;
+      font-weight:600;
+      color:#585870;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      margin-bottom:8px;
+    }
+
+    /* === Copyright === */
+    .footer-bar{
+      max-width:1200px;
+      margin:0 auto;
+      padding:24px 24px 40px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:baseline;
+      gap:12px;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+    .footer-bar .copy{
+      font-size:.4rem;
+      font-weight:400;
+      color:#9898b0;
+      opacity:.6;
+    }
+    .footer-bar .tg-foot{
+      font-size:.75rem;
+      color:#ff6b35;
+      text-decoration:none;
+    }
+    .footer-bar .tg-foot:hover{text-decoration:underline}
+
+    /* === Animations === */
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    .hero{animation:fadeUp .6s ease-out}
+    .profile-card{animation:fadeUp .6s ease-out .1s both}
+    .section{animation:fadeUp .6s ease-out .2s both}
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="logo">ML по-человечески</div>
+    <div class="nav-links">
+      <a href="#" class="active">Главная</a>
+      <a href="profile/">Профиль</a>
+      <a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">✈️ Telegram</a>
     </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
-    <a href="." title="ML и анализ данных по-человечески" class="md-header__button md-logo" aria-label="ML и анализ данных по-человечески" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            ML и анализ данных по-человечески
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Главная
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-      
-    
-    
-    
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Поиск">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Инициализация поиска
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
-    
-    
   </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    
-  
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
-        
-  
-  
-    
-  
-  Главная
 
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="profile/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Профессиональный профиль
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="https://t.me/ML_DS_one" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Telegram
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="." title="ML и анализ данных по-человечески" class="md-nav__button md-logo" aria-label="ML и анализ данных по-человечески" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    ML и анализ данных по-человечески
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Главная
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="profile/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Профессиональный профиль
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://t.me/ML_DS_one" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Telegram
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Содержание">
-  
-  
-  
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-
-  <h1>Главная</h1>
-
-<div class="hero-section">
-
-# ML и анализ данных по-человечески
-
-<p style="color: #8b949e; font-size: 1.05rem; margin-top: -8px;">Понятные объяснения, реальные примеры, никакой воды — авторский курс по анализу данных, ML, SQL и BI от практика.</p>
-
-</div>
-
-<!-- Profile Card -->
-<div class="profile-section">
-  <img src="images/profile.jpg" alt="Гарипов Нияз Варисович">
-  <div class="profile-text">
-    <div class="profile-name">Гарипов Нияз Варисович</div>
-    <div class="profile-desc">Специалист в области анализа данных, машинного обучения и RPA. Автор Telegram-канала <a href="https://t.me/ML_DS_one" style="color: #58a6ff;">ML и анализ данных по-человечески</a>. Преподаватель курсов по RPA и аналитике данных.</div>
-  </div>
-</div>
-
-<!-- Navigation -->
-<div class="premium-nav">
-  <a href="profile/" class="premium-nav-btn premium-nav-btn-main">📋 Профиль</a>
-  <a href="https://t.me/ML_DS_one" class="premium-nav-btn premium-nav-btn-main" target="_blank">✈️ Telegram-канал</a>
-</div>
-
-<div class="premium-nav">
-  <span class="nav-range-label">1–10</span>
-  <a href="lessons/001-тема-1-что-такое-анализ-данных-и-зачем-он-нужен/" class="premium-nav-btn">1</a>
-  <a href="lessons/002-тема-2-что-такое-машинное-обучение-простыми-словами/" class="premium-nav-btn">2</a>
-  <a href="lessons/003-тема-3-типы-данных-количественные-и-качественные/" class="premium-nav-btn">3</a>
-  <a href="lessons/004-тема-4-какие-задачи-решают-данные-в-бизнесе/" class="premium-nav-btn">4</a>
-  <a href="lessons/005-тема-5-полный-цикл-работы-с-данными/" class="premium-nav-btn">5</a>
-  <a href="lessons/006-урок-6-меры-центральной-тенденции/" class="premium-nav-btn">6</a>
-  <a href="lessons/007-урок-7-меры-разброса/" class="premium-nav-btn">7</a>
-  <a href="lessons/008-урок-8-ковариация-и-корреляция/" class="premium-nav-btn">8</a>
-  <a href="lessons/009-урок-9-структурированные-и-неструктурированные-данные/" class="premium-nav-btn">9</a>
-  <a href="lessons/010-урок-10-как-мыслит-аналитик-и-ml-специалист-ошибки-новичков/" class="premium-nav-btn">10</a>
-</div>
-
-<div class="premium-nav">
-  <span class="nav-range-label">11–20</span>
-  <a href="lessons/011-урок-11-среднее-медиана-мода/" class="premium-nav-btn">11</a>
-  <a href="lessons/012-урок-12-дисперсия-и-стандартное-отклонение/" class="premium-nav-btn">12</a>
-  <a href="lessons/013-урок-13-проценты-доли-темпы-роста/" class="premium-nav-btn">13</a>
-  <a href="lessons/014-урок-14-распределения-и-зачем-они-нужны/" class="premium-nav-btn">14</a>
-  <a href="lessons/015-урок-15-нормальное-распределение/" class="premium-nav-btn">15</a>
-  <a href="lessons/016-урок-16-центральная-предельная-теорема/" class="premium-nav-btn">16</a>
-  <a href="lessons/017-урок-17-корреляция/" class="premium-nav-btn">17</a>
-  <a href="lessons/018-урок-18-причинность-и-почему-е-часто-путают-с-корреляцией/" class="premium-nav-btn">18</a>
-  <a href="lessons/019-урок-19-вероятность-для-аналитика/" class="premium-nav-btn">19</a>
-  <a href="lessons/020-урок-20-условная-вероятность/" class="premium-nav-btn">20</a>
-</div>
-
-<div class="premium-nav">
-  <span class="nav-range-label">21–30</span>
-  <a href="lessons/021-урок-21-байесово-мышление/" class="premium-nav-btn">21</a>
-  <a href="lessons/023-урок-23-логистическая-регрессия/" class="premium-nav-btn">23</a>
-  <a href="lessons/024-1-урок-24-1-decision-tree-или-дерево-решений-как-модель-принимает-решения/" class="premium-nav-btn">24</a>
-  <a href="lessons/025-урок-25-random-forest-или-случайный-лес/" class="premium-nav-btn">25</a>
-  <a href="lessons/026-урок-26-bagging-как-уменьшать-случайные-ошибки-модели/" class="premium-nav-btn">26</a>
-  <a href="lessons/027-урок-27-выбросы/" class="premium-nav-btn">27</a>
-  <a href="lessons/028-урок-28-пропущенные-значения-missing-values/" class="premium-nav-btn">28</a>
-  <a href="lessons/029-урок-29-нормализация-и-масштабирование/" class="premium-nav-btn">29</a>
-  <a href="lessons/030-урок-30-переобучение-это-когда-модель-зубрит/" class="premium-nav-btn">30</a>
-</div>
-
-<div class="premium-nav">
-  <span class="nav-range-label">31–40</span>
-  <a href="lessons/031-урок-31-недообучение-это-когда-модель-не-уловила-даже-основу/" class="premium-nav-btn">31</a>
-  <a href="lessons/032-урок-32-регуляризация-это-когда-модели-не-дают-разгуляться/" class="premium-nav-btn">32</a>
-  <a href="lessons/033-1-урок-33-1-валидация-это-защита-от-самообмана/" class="premium-nav-btn">33</a>
-  <a href="lessons/034-урок-34-качество-данных-бь-т-магию-модели/" class="premium-nav-btn">34</a>
-  <a href="lessons/035-урок-35-разведочный-анализ/" class="premium-nav-btn">35</a>
-  <a href="lessons/036-урок-36-одномерный-анализ-это-когда-ты-изучаешь-один-столбец-по-настоящему/" class="premium-nav-btn">36</a>
-  <a href="lessons/037-урок-37-двумерный-анализ-это-момент-когда-данные-начинают-показывать-отношения/" class="premium-nav-btn">37</a>
-  <a href="lessons/038-урок-38-гистограмма-histogram-ящик-с-усами-boxplot-и-диаграмма-рассеяния-scatterplot-это-быстрый-спо/" class="premium-nav-btn">38</a>
-  <a href="lessons/039-урок-39-тепловые-карты-и-корреляции/" class="premium-nav-btn">39</a>
-  <a href="lessons/040-урок-40-как-искать-закономерности/" class="premium-nav-btn">40</a>
-</div>
-
-<div class="premium-nav">
-  <span class="nav-range-label">41–50</span>
-  <a href="lessons/041-урок-41-как-замечать-странности-в-данных/" class="premium-nav-btn">41</a>
-  <a href="lessons/042-урок-42-формулировка-первых-гипотез/" class="premium-nav-btn">42</a>
-  <a href="lessons/043-урок-43-как-превращать-графики-в-выводы/" class="premium-nav-btn">43</a>
-  <a href="lessons/044-урок-44-как-не-дать-данным-себя-обмануть/" class="premium-nav-btn">44</a>
-  <a href="lessons/045-урок-45-линейная-алгебра-для-ml-минимум-который-реально-нужен/" class="premium-nav-btn">45</a>
-  <a href="lessons/046-1-урок-46-1-нормировка-и-стандартизация-зачем-это-нужно/" class="premium-nav-btn">46</a>
-  <a href="lessons/047-ml-урок-47-из-101/" class="premium-nav-btn">47</a>
-  <a href="lessons/048-ml-урок-48-очистка-данных/" class="premium-nav-btn">48</a>
-  <a href="lessons/049-ml-урок-49-работа-с-пропусками/" class="premium-nav-btn">49</a>
-  <a href="lessons/050-1-ml-урок-50-1-дубликаты-и-мусорные-строки/" class="premium-nav-btn">50</a>
-</div>
-
-<div class="premium-nav">
-  <span class="nav-range-label">51–60</span>
-  <a href="lessons/051-1-ml-урок-51-1-кодирование-категориальных-признаков/" class="premium-nav-btn">51</a>
-  <a href="lessons/052-1-ml-урок-52-1-feature-engineering/" class="premium-nav-btn">52</a>
-  <a href="lessons/053-1-ml-урок-53-1-как-не-испортить-данные-при-подготовке/" class="premium-nav-btn">53</a>
-  <a href="lessons/054-1-ml-урок-54-1-train-validation-test/" class="premium-nav-btn">54</a>
-  <a href="lessons/055-1-ml-урок-55-1-data-leakage/" class="premium-nav-btn">55</a>
-  <a href="lessons/056-1-ml-урок-56-1-зачем-аналитику-sql/" class="premium-nav-btn">56</a>
-  <a href="lessons/057-1-ml-урок-57-1-sql/" class="premium-nav-btn">57</a>
-  <a href="lessons/058-1-ml-урок-58-1-group-by/" class="premium-nav-btn">58</a>
-  <a href="lessons/059-ml-урок-59-having-и-фильтрация-групп/" class="premium-nav-btn">59</a>
-  <a href="lessons/060-1-урок-60-1-join-зачем-вообще-соединять-таблицы/" class="premium-nav-btn">60</a>
-</div>
-
-<div class="premium-nav">
-  <span class="nav-range-label">61–70</span>
-  <a href="lessons/061-урок-61-inner-join-и-left-join/" class="premium-nav-btn">61</a>
-  <a href="lessons/062-урок-62-right-join-и-full-join/" class="premium-nav-btn">62</a>
-  <a href="lessons/063-ml-и-анализ-данных-урок-63/" class="premium-nav-btn">63</a>
-  <a href="lessons/064-ml-и-анализ-данных-урок-64/" class="premium-nav-btn">64</a>
-  <a href="lessons/065-ml-ds-урок-65/" class="premium-nav-btn">65</a>
-  <a href="lessons/066-ml-ds-урок-66/" class="premium-nav-btn">66</a>
-  <a href="lessons/067-ml-ds-урок-67/" class="premium-nav-btn">67</a>
-  <a href="lessons/068-ml-и-анализ-данных-урок-68/" class="premium-nav-btn">68</a>
-  <a href="lessons/069-ml-и-анализ-данных-урок-69/" class="premium-nav-btn">69</a>
-  <a href="lessons/070-тема-70-агрегатные-оконные-функции-sum-over-avg-over/" class="premium-nav-btn">70</a>
-</div>
-
-<!-- Copyright & Telegram Link -->
-<div class="copyright-bar">
-  <span class="copyright-text">© Гарипов Нияз Варисович</span>
-  <a href="https://t.me/ML_DS_one" class="tg-link" target="_blank">https://t.me/ML_DS_one</a>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
-        </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      © Гарипов Нияз Варисович
+  <!-- Hero -->
+  <section class="hero">
+    <div class="badge">🔥 Авторский курс 101 урок</div>
+    <h1>ML и анализ данных<br>по-человечески</h1>
+    <p>Понятные объяснения, реальные примеры, никакой воды. Авторский курс по анализу данных, ML, SQL и BI от практика.</p>
+    <div class="cta-row">
+      <a href="#lessons" class="cta-primary">📚 Все уроки</a>
+      <a href="https://t.me/ML_DS_one" class="cta-secondary" target="_blank">✈️ Telegram-канал</a>
+      <a href="profile/" class="cta-secondary">👤 Обо мне</a>
     </div>
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
-      
-        
-<div class="md-social">
-  
-    
-    
-    
-    
-      
-      
-    
-    <a href="https://t.me/ML_DS_one" target="_blank" rel="noopener" title="t.me" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496m115 168.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5c-2.2.5-37.1 23.5-104.6 69.1-9.9 6.8-18.9 10.1-26.9 9.9-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3.6-4.5 6.7-9 18.4-13.7 72.3-31.5 120.5-52.3 144.6-62.3 68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6.5 9.6 2.9 2 1.7 3.2 4.1 3.5 6.7.5 3.2.6 6.5.4 9.8z"/></svg>
-    </a>
-  
-    
-    
-    
-    
-      
-      
-    
-    <a href="https://github.com/NiiyazG/ml-ds-channel-pages" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-    </a>
-  
-</div>
-      
+  </section>
+
+  <!-- Profile Card -->
+  <div class="profile-card" style="max-width:800px;margin:0 auto 32px;padding:24px 32px;">
+    <img src="images/profile.jpg" alt="Гарипов Нияз Варисович">
+    <div class="info">
+      <div class="name">Гарипов Нияз Варисович</div>
+      <div class="desc">Специалист в области анализа данных, ML и RPA. Автор <a href="https://t.me/ML_DS_one">Telegram-канала</a>. Преподаватель курсов по RPA и аналитике данных.</div>
     </div>
   </div>
-</footer>
-      
+
+  <!-- Stats -->
+  <section class="section">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="num">70</div><div class="label">Опубликованных уроков</div></div>
+      <div class="stat-card"><div class="num">101</div><div class="label">Всего в курсе</div></div>
+      <div class="stat-card"><div class="num">7</div><div class="label">Тематических блоков</div></div>
+      <div class="stat-card"><div class="num">🔥</div><div class="label">Постоянное обновление</div></div>
     </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
+  </section>
+
+  <!-- Lessons Navigation -->
+  <section class="section" id="lessons">
+    <div class="section-title"><span class="accent"></span> Навигация по урокам</div>
+
+    <div class="nav-group">
+      <div class="group-title">Основы анализа данных</div>
+      <div class="lessons-grid">
+        <span class="lesson-btn section-label">1–10</span>
+        <a href="lessons/001-тема-1-что-такое-анализ-данных-и-зачем-он-нужен/" class="lesson-btn">1</a>
+        <a href="lessons/002-тема-2-что-такое-машинное-обучение-простыми-словами/" class="lesson-btn">2</a>
+        <a href="lessons/003-тема-3-типы-данных-количественные-и-качественные/" class="lesson-btn">3</a>
+        <a href="lessons/004-тема-4-какие-задачи-решают-данные-в-бизнесе/" class="lesson-btn">4</a>
+        <a href="lessons/005-тема-5-полный-цикл-работы-с-данными/" class="lesson-btn">5</a>
+        <a href="lessons/006-урок-6-меры-центральной-тенденции/" class="lesson-btn">6</a>
+        <a href="lessons/007-урок-7-меры-разброса/" class="lesson-btn">7</a>
+        <a href="lessons/008-урок-8-ковариация-и-корреляция/" class="lesson-btn">8</a>
+        <a href="lessons/009-урок-9-структурированные-и-неструктурированные-данные/" class="lesson-btn">9</a>
+        <a href="lessons/010-урок-10-как-мыслит-аналитик-и-ml-специалист-ошибки-новичков/" class="lesson-btn">10</a>
+      </div>
     </div>
-    
-    
-    
-      
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.tracking"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
-    
-    
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
-      
-    
-  </body>
+
+    <div class="nav-group">
+      <div class="group-title">Статистика и вероятность</div>
+      <div class="lessons-grid">
+        <span class="lesson-btn section-label">11–20</span>
+        <a href="lessons/011-урок-11-среднее-медиана-мода/" class="lesson-btn">11</a>
+        <a href="lessons/012-урок-12-дисперсия-и-стандартное-отклонение/" class="lesson-btn">12</a>
+        <a href="lessons/013-урок-13-проценты-доли-темпы-роста/" class="lesson-btn">13</a>
+        <a href="lessons/014-урок-14-распределения-и-зачем-они-нужны/" class="lesson-btn">14</a>
+        <a href="lessons/015-урок-15-нормальное-распределение/" class="lesson-btn">15</a>
+        <a href="lessons/016-урок-16-центральная-предельная-теорема/" class="lesson-btn">16</a>
+        <a href="lessons/017-урок-17-корреляция/" class="lesson-btn">17</a>
+        <a href="lessons/018-урок-18-причинность-и-почему-е-часто-путают-с-корреляцией/" class="lesson-btn">18</a>
+        <a href="lessons/019-урок-19-вероятность-для-аналитика/" class="lesson-btn">19</a>
+        <a href="lessons/020-урок-20-условная-вероятность/" class="lesson-btn">20</a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="group-title">Модели машинного обучения</div>
+      <div class="lessons-grid">
+        <span class="lesson-btn section-label">21–30</span>
+        <a href="lessons/021-урок-21-байесово-мышление/" class="lesson-btn">21</a>
+        <span class="lesson-btn" style="opacity:.3;pointer-events:none">22</span>
+        <a href="lessons/023-урок-23-логистическая-регрессия/" class="lesson-btn">23</a>
+        <a href="lessons/024-1-урок-24-1-decision-tree-или-дерево-решений-как-модель-принимает-решения/" class="lesson-btn">24</a>
+        <a href="lessons/025-урок-25-random-forest-или-случайный-лес/" class="lesson-btn">25</a>
+        <a href="lessons/026-урок-26-bagging-как-уменьшать-случайные-ошибки-модели/" class="lesson-btn">26</a>
+        <a href="lessons/027-урок-27-выбросы/" class="lesson-btn">27</a>
+        <a href="lessons/028-урок-28-пропущенные-значения-missing-values/" class="lesson-btn">28</a>
+        <a href="lessons/029-урок-29-нормализация-и-масштабирование/" class="lesson-btn">29</a>
+        <a href="lessons/030-урок-30-переобучение-это-когда-модель-зубрит/" class="lesson-btn">30</a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="group-title">Работа с данными и EDA</div>
+      <div class="lessons-grid">
+        <span class="lesson-btn section-label">31–40</span>
+        <a href="lessons/031-урок-31-недообучение-это-когда-модель-не-уловила-даже-основу/" class="lesson-btn">31</a>
+        <a href="lessons/032-урок-32-регуляризация-это-когда-модели-не-дают-разгуляться/" class="lesson-btn">32</a>
+        <a href="lessons/033-1-урок-33-1-валидация-это-защита-от-самообмана/" class="lesson-btn">33</a>
+        <a href="lessons/034-урок-34-качество-данных-бь-т-магию-модели/" class="lesson-btn">34</a>
+        <a href="lessons/035-урок-35-разведочный-анализ/" class="lesson-btn">35</a>
+        <a href="lessons/036-урок-36-одномерный-анализ-это-когда-ты-изучаешь-один-столбец-по-настоящему/" class="lesson-btn">36</a>
+        <a href="lessons/037-урок-37-двумерный-анализ-это-момент-когда-данные-начинают-показывать-отношения/" class="lesson-btn">37</a>
+        <a href="lessons/038-урок-38-гистограмма-histogram-ящик-с-усами-boxplot-и-диаграмма-рассеяния-scatterplot-это-быстрый-спо/" class="lesson-btn">38</a>
+        <a href="lessons/039-урок-39-тепловые-карты-и-корреляции/" class="lesson-btn">39</a>
+        <a href="lessons/040-урок-40-как-искать-закономерности/" class="lesson-btn">40</a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="group-title">Критическое мышление и анализ</div>
+      <div class="lessons-grid">
+        <span class="lesson-btn section-label">41–50</span>
+        <a href="lessons/041-урок-41-как-замечать-странности-в-данных/" class="lesson-btn">41</a>
+        <a href="lessons/042-урок-42-формулировка-первых-гипотез/" class="lesson-btn">42</a>
+        <a href="lessons/043-урок-43-как-превращать-графики-в-выводы/" class="lesson-btn">43</a>
+        <a href="lessons/044-урок-44-как-не-дать-данным-себя-обмануть/" class="lesson-btn">44</a>
+        <a href="lessons/045-урок-45-линейная-алгебра-для-ml-минимум-который-реально-нужен/" class="lesson-btn">45</a>
+        <a href="lessons/046-1-урок-46-1-нормировка-и-стандартизация-зачем-это-нужно/" class="lesson-btn">46</a>
+        <a href="lessons/047-ml-урок-47-из-101/" class="lesson-btn">47</a>
+        <a href="lessons/048-ml-урок-48-очистка-данных/" class="lesson-btn">48</a>
+        <a href="lessons/049-ml-урок-49-работа-с-пропусками/" class="lesson-btn">49</a>
+        <a href="lessons/050-1-ml-урок-50-1-дубликаты-и-мусорные-строки/" class="lesson-btn">50</a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="group-title">Подготовка данных и инжиниринг</div>
+      <div class="lessons-grid">
+        <span class="lesson-btn section-label">51–60</span>
+        <a href="lessons/051-1-ml-урок-51-1-кодирование-категориальных-признаков/" class="lesson-btn">51</a>
+        <a href="lessons/052-1-ml-урок-52-1-feature-engineering/" class="lesson-btn">52</a>
+        <a href="lessons/053-1-ml-урок-53-1-как-не-испортить-данные-при-подготовке/" class="lesson-btn">53</a>
+        <a href="lessons/054-1-ml-урок-54-1-train-validation-test/" class="lesson-btn">54</a>
+        <a href="lessons/055-1-ml-урок-55-1-data-leakage/" class="lesson-btn">55</a>
+        <a href="lessons/056-1-ml-урок-56-1-зачем-аналитику-sql/" class="lesson-btn">56</a>
+        <a href="lessons/057-1-ml-урок-57-1-sql/" class="lesson-btn">57</a>
+        <a href="lessons/058-1-ml-урок-58-1-group-by/" class="lesson-btn">58</a>
+        <a href="lessons/059-ml-урок-59-having-и-фильтрация-групп/" class="lesson-btn">59</a>
+        <a href="lessons/060-1-урок-60-1-join-зачем-вообще-соединять-таблицы/" class="lesson-btn">60</a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="group-title">SQL для аналитика</div>
+      <div class="lessons-grid">
+        <span class="lesson-btn section-label">61–70</span>
+        <a href="lessons/061-урок-61-inner-join-и-left-join/" class="lesson-btn">61</a>
+        <a href="lessons/062-урок-62-right-join-и-full-join/" class="lesson-btn">62</a>
+        <a href="lessons/063-ml-и-анализ-данных-урок-63/" class="lesson-btn">63</a>
+        <a href="lessons/064-ml-и-анализ-данных-урок-64/" class="lesson-btn">64</a>
+        <a href="lessons/065-ml-ds-урок-65/" class="lesson-btn">65</a>
+        <a href="lessons/066-ml-ds-урок-66/" class="lesson-btn">66</a>
+        <a href="lessons/067-ml-ds-урок-67/" class="lesson-btn">67</a>
+        <a href="lessons/068-ml-и-анализ-данных-урок-68/" class="lesson-btn">68</a>
+        <a href="lessons/069-ml-и-анализ-данных-урок-69/" class="lesson-btn">69</a>
+        <a href="lessons/070-тема-70-агрегатные-оконные-функции-sum-over-avg-over/" class="lesson-btn">70</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-bar">
+    <span class="copy">© Гарипов Нияз Варисович</span>
+    <a href="https://t.me/ML_DS_one" class="tg-foot" target="_blank">https://t.me/ML_DS_one</a>
+  </footer>
+
+</body>
 </html>

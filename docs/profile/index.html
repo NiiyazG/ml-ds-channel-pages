@@ -1,790 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профессиональный профиль — ML и анализ данных по-человечески</title>
+  <meta name="description" content="Профиль Гарипова Нияза Варисовича — эксперт AI, ML, Data Science, BI, RPA">
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+      background:#0a0a12;
+      color:#e8e8f0;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:'';
+      position:fixed;
+      top:-50%;left:-50%;width:200%;height:200%;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(255,107,53,.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,184,148,.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(116,185,255,.08) 0%, transparent 50%);
+      z-index:-1;pointer-events:none;
+    }
 
-<!doctype html>
-<html lang="ru" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="Премиальный образовательный ресурс по анализу данных и машинному обучению">
-      
-      
-      
-      
-        <link rel="prev" href="..">
-      
-      
-      
-        
-      
-      
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
-    
-    
-      
-        <title>Профессиональный профиль - ML и анализ данных по-человечески</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
-      
-        
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
-      
-      
+    .top-nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 24px;max-width:1200px;margin:0 auto;
+      position:sticky;top:0;z-index:100;
+      background:rgba(10,10,18,.7);backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .top-nav .logo{
+      font-weight:800;font-size:1.15rem;
+      background:linear-gradient(135deg,#ff6b35,#f83600);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      letter-spacing:-.03em;
+    }
+    .top-nav .nav-links{display:flex;gap:8px;align-items:center}
+    .top-nav .nav-links a{
+      color:#9898b0;text-decoration:none;font-size:.85rem;
+      font-weight:500;padding:6px 14px;border-radius:8px;transition:all .2s;
+    }
+    .top-nav .nav-links a:hover{color:#e8e8f0;background:rgba(255,255,255,.05)}
+    .top-nav .nav-links a.active{color:#fff;background:rgba(255,107,53,.15)}
+    .top-nav .nav-links .tg-btn{
+      background:linear-gradient(135deg,#ff6b35,#f83600);color:#fff !important;
+      padding:6px 16px;border-radius:8px;font-weight:600;
+    }
 
+    .hero{
+      padding:48px 24px 32px;max-width:1200px;margin:0 auto;text-align:center;
+    }
+    .hero .badge{
+      display:inline-block;padding:4px 14px;border-radius:999px;
+      background:rgba(255,107,53,.12);color:#ff6b35;
+      font-size:.75rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+      border:1px solid rgba(255,107,53,.2);margin-bottom:16px;
+    }
+    .hero h1{
+      font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.1;
+      letter-spacing:-.03em;margin-bottom:12px;
+      background:linear-gradient(135deg,#fff 0%,#ff6b35 40%,#f83600 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .hero p{font-size:1.05rem;color:#9898b0;max-width:600px;margin:0 auto}
 
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="../stylesheets/premium.css">
-    
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
+    .container{max-width:1200px;margin:0 auto;padding:0 24px 40px}
 
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#_1" class="md-skip">
-          Перейти к содержанию
-        </a>
-      
+    .profile-card{
+      max-width:700px;margin:0 auto 32px;padding:24px 32px;
+      background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);border-radius:16px;
+      display:flex;gap:24px;align-items:center;
+    }
+    .profile-card img{
+      width:80px;height:80px;border-radius:50%;object-fit:cover;
+      flex-shrink:0;border:2px solid rgba(255,107,53,.3);
+    }
+    .profile-card .info{flex:1}
+    .profile-card .name{font-weight:700;font-size:1.05rem;color:#fff;margin-bottom:4px}
+    .profile-card .desc{color:#9898b0;font-size:.85rem;line-height:1.5}
+    .profile-card .desc a{color:#ff6b35;text-decoration:none}
+    @media(max-width:600px){.profile-card{flex-direction:column;text-align:center;padding:20px}}
+
+    .section-title{
+      font-size:1.3rem;font-weight:700;margin-bottom:16px;margin-top:32px;
+      display:flex;align-items:center;gap:10px;
+    }
+    .section-title .accent{
+      display:inline-block;width:4px;height:24px;
+      background:linear-gradient(180deg,#ff6b35,#f83600);border-radius:2px;flex-shrink:0;
+    }
+
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+    .skill-card{
+      padding:20px;border-radius:12px;
+      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+      transition:all .25s;
+    }
+    .skill-card:hover{
+      background:rgba(255,255,255,.06);transform:translateY(-2px);
+      border-color:rgba(255,107,53,.2);
+    }
+    .skill-card .card-title{font-weight:700;font-size:.95rem;color:#fff;margin-bottom:10px}
+    .skill-card ul{list-style:none;padding:0}
+    .skill-card ul li{
+      font-size:.82rem;color:#9898b0;padding:3px 0;
+      padding-left:16px;position:relative;
+    }
+    .skill-card ul li::before{
+      content:'▸';position:absolute;left:0;color:#ff6b35;font-weight:600;
+    }
+
+    .edu-card{
+      padding:20px 24px;border-radius:12px;
+      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+    }
+    .edu-card ul{list-style:none;padding:0}
+    .edu-card ul li{
+      font-size:.85rem;color:#9898b0;padding:4px 0;
+      padding-left:16px;position:relative;
+    }
+    .edu-card ul li::before{content:'🎓';position:absolute;left:-4px;top:3px;font-size:.75rem}
+
+    .full-desc{
+      padding:20px 24px;border-radius:12px;
+      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+      font-size:.9rem;color:#c8c8d8;line-height:1.7;
+    }
+
+    .footer-bar{
+      max-width:1200px;margin:0 auto;padding:24px 24px 40px;
+      display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+    .footer-bar .copy{font-size:.4rem;font-weight:400;color:#9898b0;opacity:.6}
+    .footer-bar .tg-foot{font-size:.75rem;color:#ff6b35;text-decoration:none}
+    .footer-bar .tg-foot:hover{text-decoration:underline}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .hero{animation:fadeUp .6s ease-out}
+    .profile-card,.container{animation:fadeUp .6s ease-out .1s both}
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <div class="logo">ML по-человечески</div>
+    <div class="nav-links">
+      <a href="../">Главная</a>
+      <a href="#" class="active">Профиль</a>
+      <a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">✈️ Telegram</a>
     </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
-    <a href=".." title="ML и анализ данных по-человечески" class="md-header__button md-logo" aria-label="ML и анализ данных по-человечески" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            ML и анализ данных по-человечески
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Профессиональный профиль
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-      
-    
-    
-    
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Поиск">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Инициализация поиска
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
-    
-    
   </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
-        
-  
-  
-    
-  
-  Главная
 
-      </a>
-    </li>
-  
+  <section class="hero">
+    <div class="badge">👤 Профессиональный профиль</div>
+    <h1>Гарипов Нияз Варисович</h1>
+    <p>Эксперт на стыке AI, Data Science, BI и автоматизации процессов</p>
+  </section>
 
-      
-        
-  
-  
-  
-    
-  
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Профессиональный профиль
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="https://t.me/ML_DS_one" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Telegram
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
+  <div class="profile-card">
+    <img src="../images/profile.jpg" alt="Гарипов Нияз Варисович">
+    <div class="info">
+      <div class="name">Гарипов Нияз Варисович</div>
+      <div class="desc">Специалист в области анализа данных, ML и RPA. Автор <a href="https://t.me/ML_DS_one">Telegram-канала</a>. Преподаватель курсов по RPA и аналитике данных.</div>
+    </div>
   </div>
-</nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
 
+  <div class="container">
 
-  
+    <div class="section-title"><span class="accent"></span> Ключевые компетенции</div>
+    <div class="skills-grid">
 
+      <div class="skill-card">
+        <div class="card-title">🤖 AI и машинное обучение</div>
+        <ul>
+          <li>Agent AI и Multi-Agent Systems</li>
+          <li>Large Language Models (LLM), RAG</li>
+          <li>Machine Learning, Data Science</li>
+          <li>Generative AI, Prompt Engineering</li>
+          <li>AI Automation</li>
+        </ul>
+      </div>
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ML и анализ данных по-человечески" class="md-nav__button md-logo" aria-label="ML и анализ данных по-человечески" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+      <div class="skill-card">
+        <div class="card-title">📊 Аналитика данных и BI</div>
+        <ul>
+          <li>Business Intelligence (BI)</li>
+          <li>SQL, ETL/ELT-процессы</li>
+          <li>Визуализация данных и дашборды</li>
+          <li>Предиктивная аналитика</li>
+          <li>Data-driven управление</li>
+        </ul>
+      </div>
 
-    </a>
-    ML и анализ данных по-человечески
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Главная
-  
+      <div class="skill-card">
+        <div class="card-title">⚡ Автоматизация</div>
+        <ul>
+          <li>BPMN, Robotic Process Automation (RPA)</li>
+          <li>n8n и интеллектуальные workflow</li>
+          <li>Low-code/No-code решения</li>
+          <li>Интеграция корпоративных систем</li>
+          <li>Цифровая трансформация</li>
+        </ul>
+      </div>
 
-    
-  </span>
-  
-  
+      <div class="skill-card">
+        <div class="card-title">💻 Разработка</div>
+        <ul>
+          <li>Python, SQL, FastAPI, REST API</li>
+          <li>Backend Development, AI-интеграции</li>
+          <li>Cursor, VS Code, Opencode</li>
+          <li>Hermes, OpenClaw, Git</li>
+          <li>Web Development</li>
+        </ul>
+      </div>
 
-      </a>
-    </li>
-  
+      <div class="skill-card">
+        <div class="card-title">🎨 UX/UI и продукты</div>
+        <ul>
+          <li>UX Research, UX/UI Design</li>
+          <li>Проектирование цифровых сервисов</li>
+          <li>Customer Journey Mapping</li>
+          <li>Product Thinking</li>
+        </ul>
+      </div>
 
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Профессиональный профиль
-  
+    </div>
 
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Профессиональный профиль
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Содержание">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Содержание
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ключевые компетенции
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ключевые компетенции">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🤖 Искусственный интеллект и машинное обучение
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📊 Аналитика данных и BI
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚡ Автоматизация и цифровая трансформация
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💻 Разработка и технологии
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uxui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎨 UX/UI и цифровые продукты
-      
-    </span>
-  </a>
-  
-</li>
-        
+    <div class="section-title"><span class="accent"></span> Образование</div>
+    <div class="edu-card">
+      <ul>
+        <li>МГТУ им. Н.Э. Баумана</li>
+        <li>Университет ИТМО — аналитик данных, большие данные</li>
+        <li>РГУ нефти и газа (НИУ) имени И.М. Губкина</li>
+        <li>Казанский государственный университет</li>
       </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎓 Образование
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📌 Профессиональный профиль
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
+    </div>
 
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://t.me/ML_DS_one" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Telegram
-  
+    <div class="section-title"><span class="accent"></span> О себе</div>
+    <div class="full-desc">
+      Эксперт по созданию интеллектуальных цифровых экосистем, объединяющих искусственный интеллект, аналитику данных и автоматизацию. Специализируюсь на разработке AI-агентов, LLM-платформ, аналитических систем, корпоративных ассистентов и решений для цифровой трансформации бизнеса.
+      <br><br>
+      Сопровождаю проекты полного цикла: от анализа бизнес-процессов и проектирования архитектуры до разработки, внедрения и масштабирования интеллектуальных решений. Объединяю компетенции AI Engineer, Data Scientist, BI Analyst, Automation Architect и Product Developer.
+    </div>
 
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Содержание">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Содержание
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ключевые компетенции
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ключевые компетенции">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🤖 Искусственный интеллект и машинное обучение
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📊 Аналитика данных и BI
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚡ Автоматизация и цифровая трансформация
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💻 Разработка и технологии
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uxui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎨 UX/UI и цифровые продукты
-      
-    </span>
-  </a>
-  
-</li>
-        
+    <div class="section-title"><span class="accent"></span> Сертификаты</div>
+    <div class="edu-card">
+      <ul>
+        <li>Polyanalyst</li>
+        <li>Robin RPA</li>
+        <li>Sherpa RPA</li>
       </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎓 Образование
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📌 Профессиональный профиль
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              
-              <article class="md-content__inner md-typeset">
-                
-                  
+    </div>
 
-
-
-  <h1>Профессиональный профиль</h1>
-
-<div class="hero-section">
-
-# Профессиональный профиль
-
-<p style="color: #8b949e; font-size: 1.05rem; margin-top: -8px;">Эксперт на стыке AI, Data Science, BI и автоматизации процессов.</p>
-
-</div>
-
-<div class="profile-section">
-  <img src="images/profile.jpg" alt="Гарипов Нияз Варисович">
-  <div class="profile-text">
-    <div class="profile-name">Гарипов Нияз Варисович</div>
-    <div class="profile-desc">Обладаю комплексной экспертизой на стыке AI, ML, Data Science, Business Intelligence и автоматизации процессов. Разрабатываю и внедряю AI-агентов, LLM-решения, аналитические системы и цифровые сервисы, ориентированные на повышение эффективности бизнеса.</div>
   </div>
-</div>
 
-<h2 id="_1">Ключевые компетенции<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2">🤖 Искусственный интеллект и машинное обучение<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<div class="card">
-- Agent AI и Multi-Agent Systems
-- Large Language Models (LLM), RAG, Prompt Engineering
-- Machine Learning, Data Science, Generative AI
-- AI Automation, интеграция ИИ в корпоративные системы
-</div>
+  <footer class="footer-bar">
+    <span class="copy">© Гарипов Нияз Варисович</span>
+    <a href="https://t.me/ML_DS_one" class="tg-foot" target="_blank">https://t.me/ML_DS_one</a>
+  </footer>
 
-<h3 id="bi">📊 Аналитика данных и BI<a class="headerlink" href="#bi" title="Permanent link">&para;</a></h3>
-<div class="card">
-- Business Intelligence, Data Analytics
-- SQL и проектирование баз данных, ETL/ELT-процессы
-- Визуализация данных и дашборды
-- Предиктивная аналитика, Data-driven управление
-</div>
-
-<h3 id="_3">⚡ Автоматизация и цифровая трансформация<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="card">
-- BPMN-моделирование бизнес-процессов
-- Robotic Process Automation (RPA), n8n
-- Low-code/No-code решения, интеграция корпоративных систем
-- Оптимизация и цифровизация бизнес-процессов
-</div>
-
-<h3 id="_4">💻 Разработка и технологии<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="card">
-- Python, SQL, FastAPI, REST API
-- Backend Development, AI-интеграции, Web Development
-- Cursor, VS Code, Opencode, Hermes, OpenClaw, Git
-- AI IDE и агентные среды разработки
-</div>
-
-<h3 id="uxui">🎨 UX/UI и цифровые продукты<a class="headerlink" href="#uxui" title="Permanent link">&para;</a></h3>
-<div class="card">
-- UX Research, UX/UI Design
-- Проектирование цифровых сервисов
-- Customer Journey Mapping, Product Thinking
-</div>
-
-<h2 id="_5">🎓 Образование<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<div class="card">
-- МГТУ им. Н.Э. Баумана
-- Университет ИТМО — аналитик данных, большие данные, DS, SQL, Python, ML
-- РГУ нефти и газа (НИУ) имени И.М. Губкина — горный инженер-нефтяник
-- Казанский государственный университет — преподаватель психологии
-</div>
-
-<h2 id="_6">📌 Профессиональный профиль<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<div class="card">
-Эксперт по созданию интеллектуальных цифровых экосистем, объединяющих искусственный интеллект, аналитику данных и автоматизацию. Специализируюсь на разработке AI-агентов, LLM-платформ, аналитических систем, корпоративных ассистентов и решений для цифровой трансформации бизнеса.
-
-Способен сопровождать проекты полного цикла: от анализа бизнес-процессов и проектирования архитектуры до разработки, внедрения и масштабирования интеллектуальных решений. Объединяю компетенции AI Engineer, Data Scientist, BI Analyst, Automation Architect и Product Developer для создания систем, обеспечивающих реальный бизнес-эффект.
-</div>
-
-<!-- Copyright & Telegram Link -->
-<div class="copyright-bar" style="margin-top: 40px;">
-  <span class="copyright-text">© Гарипов Нияз Варисович</span>
-  <a href="https://t.me/ML_DS_one" class="tg-link" target="_blank">https://t.me/ML_DS_one</a>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
-        </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      © Гарипов Нияз Варисович
-    </div>
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
-      
-        
-<div class="md-social">
-  
-    
-    
-    
-    
-      
-      
-    
-    <a href="https://t.me/ML_DS_one" target="_blank" rel="noopener" title="t.me" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496m115 168.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5c-2.2.5-37.1 23.5-104.6 69.1-9.9 6.8-18.9 10.1-26.9 9.9-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3.6-4.5 6.7-9 18.4-13.7 72.3-31.5 120.5-52.3 144.6-62.3 68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6.5 9.6 2.9 2 1.7 3.2 4.1 3.5 6.7.5 3.2.6 6.5.4 9.8z"/></svg>
-    </a>
-  
-    
-    
-    
-    
-      
-      
-    
-    <a href="https://github.com/NiiyazG/ml-ds-channel-pages" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-    </a>
-  
-</div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    
-    
-      
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.tracking"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
-    
-    
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
-      
-    
-  </body>
+</body>
 </html>
