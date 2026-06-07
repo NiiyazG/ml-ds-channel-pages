@@ -4,7 +4,8 @@
 
   var nav = document.createElement('nav');
   nav.className = 'top-nav top-nav-injected';
-  nav.innerHTML = '<div class="nav-links">' +
+  nav.innerHTML = '<div class="logo">ML и анализ данных по-человечески</div>' +
+    '<div class="nav-links">' +
     '<a href="../../">Главная</a>' +
     '<a href="../../lessons/001-тема-1-что-такое-анализ-данных-и-зачем-он-нужен/">Уроки</a>' +
     '<a href="../../profile/">Обо мне</a>' +
@@ -21,6 +22,7 @@
   var style = document.createElement('style');
   style.textContent = '.top-nav-injected{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;width:100%;margin:0;position:sticky;top:0;z-index:100;background:rgba(10,10,18,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}' +
 
+    '.top-nav-injected .logo{font-weight:800;font-size:1.3rem;text-transform:uppercase;background:linear-gradient(135deg,#3481B8,#2673A8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em}' +
     '.top-nav-injected .nav-links{display:flex;gap:8px;align-items:center}' +
     '.top-nav-injected .nav-links a,' +
     '.top-nav-injected .nav-links .tg-btn{color:#9898b0;text-decoration:none;font-size:.85rem;font-weight:500;padding:6px 14px;border-radius:8px;transition:all .2s}' +
