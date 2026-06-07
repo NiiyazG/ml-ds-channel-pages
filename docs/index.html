@@ -77,7 +77,12 @@
       overflow-y:auto;
       flex:1;
       max-height:calc(100vh - 300px);
+      scrollbar-width:thin;
+      scrollbar-color:rgba(255,255,255,.06) transparent;
     }
+    .photo-col .lesson-nav::-webkit-scrollbar{width:4px}
+    .photo-col .lesson-nav::-webkit-scrollbar-track{background:transparent}
+    .photo-col .lesson-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:4px}
     .photo-col .lesson-nav a{
       display:block;
       padding:5px 8px;
