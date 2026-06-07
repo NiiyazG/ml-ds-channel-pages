@@ -73,7 +73,7 @@
     .content-col{
       flex:1;
       max-width:860px;
-      padding:40px 40px 60px;
+      padding:40px 40px 80px;
     }
 
     /* === Top Nav === */
@@ -242,11 +242,18 @@
 
     /* === Footer === */
     .footer-bar{
-      margin-top:auto;
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      z-index:50;
       display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;
       justify-content:flex-end;
-      padding:20px 32px 32px;
+      padding:12px 32px;
       border-top:1px solid rgba(255,255,255,.06);
+      background:rgba(10,10,18,.85);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
     }
     .footer-bar .copy{font-size:.75rem;font-weight:400;color:#ffffff;opacity:.45}
     .footer-bar .tg-foot{font-size:.72rem;color:#3481B8;text-decoration:none}
