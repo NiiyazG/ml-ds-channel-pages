@@ -31,20 +31,36 @@
       z-index:-1;pointer-events:none;
     }
 
-    .top-nav{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:16px 24px;max-width:1200px;margin:0 auto;
-      position:sticky;top:0;z-index:100;
-      background:rgba(10,10,18,.7);backdrop-filter:blur(16px);
+    .top-nav-wrap{
+      width:100%;
+      background:rgba(10,10,18,.7);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
       border-bottom:1px solid rgba(255,255,255,.06);
+      position:sticky;
+      top:0;
+      z-index:100;
+      flex-shrink:0;
+    }
+    .top-nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 32px;
+      max-width:none;
+      width:100%;
     }
     .top-nav .logo{
-      font-weight:800;font-size:1.15rem;
+      font-weight:800;
+      font-size:1.3rem;
+      text-transform:uppercase;
       background:linear-gradient(135deg,#3481B8,#2673A8);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-      letter-spacing:-.03em;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      letter-spacing:-.02em;
     }
-    .top-nav .nav-links{display:flex;gap:8px;align-items:center}
+    .top-nav .nav-links{display:flex;gap:8px;align-items:center;margin-left:120px}
     .top-nav .nav-links a,
     .top-nav .nav-links .tg-btn{
       color:#9898b0;text-decoration:none;font-size:.85rem;
@@ -57,6 +73,24 @@
     .top-nav .nav-links a.active,
     .top-nav .nav-links .tg-btn.active{
       color:#fff;background:rgba(21,72,137,.15)
+    }
+    .top-nav .search-wrap{
+      position:relative;
+    }
+    .top-nav .search-wrap input{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:8px;
+      padding:6px 12px;
+      font-size:.85rem;
+      color:#9898b0;
+      width:160px;
+      outline:none;
+      transition:all .2s;
+      font-family:inherit;
+    }
+    .top-nav .search-wrap input:focus{
+      border-color:#3481B8;background:rgba(255,255,255,.09);
     }
 
     .hero{
@@ -156,14 +190,20 @@
 </head>
 <body>
 
+<div class="top-nav-wrap">
   <nav class="top-nav">
     <div class="logo">ML и анализ данных по-человечески</div>
     <div class="nav-links">
       <a href="../">Главная</a>
+      <a href="../lessons/001-тема-1-что-такое-анализ-данных-и-зачем-он-нужен/">Уроки</a>
       <a href="#" class="active">Обо мне</a>
       <a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">Telegram-канал</a>
+      <div class="search-wrap">
+        <input type="text" id="searchInput" placeholder="Поиск уроков..." autocomplete="off">
+      </div>
     </div>
   </nav>
+</div>
 
   <section class="hero">
     <div class="badge">👤 Профессиональный профиль</div>
@@ -278,5 +318,121 @@
   </footer>
 
 <script src="../assets/nav.js"></script>
+
+<script>
+  const lessons = [
+    {n:1,  title:'Что такое анализ данных и зачем он нужен', url:'../lessons/001-тема-1-что-такое-анализ-данных-и-зачем-он-нужен/'},
+    {n:2,  title:'Что такое машинное обучение простыми словами', url:'../lessons/002-тема-2-что-такое-машинное-обучение-простыми-словами/'},
+    {n:3,  title:'Типы данных: количественные и качественные', url:'../lessons/003-тема-3-типы-данных-количественные-и-качественные/'},
+    {n:4,  title:'Какие задачи решают данные в бизнесе', url:'../lessons/004-тема-4-какие-задачи-решают-данные-в-бизнесе/'},
+    {n:5,  title:'Полный цикл работы с данными', url:'../lessons/005-тема-5-полный-цикл-работы-с-данными/'},
+    {n:6,  title:'Меры центральной тенденции', url:'../lessons/006-урок-6-меры-центральной-тенденции/'},
+    {n:7,  title:'Меры разброса', url:'../lessons/007-урок-7-меры-разброса/'},
+    {n:8,  title:'Ковариация и корреляция', url:'../lessons/008-урок-8-ковариация-и-корреляция/'},
+    {n:9,  title:'Структурированные и неструктурированные данные', url:'../lessons/009-урок-9-структурированные-и-неструктурированные-данные/'},
+    {n:10, title:'Реляционные и нереляционные БД', url:'../lessons/010-урок-10-реляционные-и-нереляционные-бд/'},
+    {n:11, title:'Метрики качества в анализе данных', url:'../lessons/011-урок-11-метрики-качества-в-анализе-данных/'},
+    {n:12, title:'EDA — разведочный анализ', url:'../lessons/012-урок-12-eda-разведочный-анализ/'},
+    {n:13, title:'Data Wrangling', url:'../lessons/013-урок-13-data-wrangling/'},
+    {n:14, title:'Feature Engineering', url:'../lessons/014-урок-14-feature-engineering/'},
+    {n:15, title:'Типы шкал', url:'../lessons/015-урок-15-типы-шкал/'},
+    {n:16, title:'Измерения в анализе данных', url:'../lessons/016-урок-16-измерения-в-анализе-данных/'},
+    {n:17, title:'SQL для аналитика', url:'../lessons/017-урок-17-sql-для-аналитика/'},
+    {n:18, title:'Группировки и оконные функции', url:'../lessons/018-урок-18-группировки-и-оконные-функции/'},
+    {n:19, title:'Подзапросы и CTE', url:'../lessons/019-урок-19-подзапросы-и-cte/'},
+    {n:20, title:'Транзакции и индексы', url:'../lessons/020-урок-20-транзакции-и-индексы/'},
+    {n:21, title:'Визуализация: базовые графики', url:'../lessons/021-урок-21-визуализация-базовые-графики/'},
+    {n:22, title:'Правила хорошей визуализации', url:'../lessons/022-урок-22-правила-хорошей-визуализации/'},
+    {n:23, title:'Seaborn vs Matplotlib', url:'../lessons/023-урок-23-seaborn-vs-matplotlib/'},
+    {n:24, title:'Интерактивная визуализация', url:'../lessons/024-урок-24-интерактивная-визуализация/'},
+    {n:25, title:'Дашборды', url:'../lessons/025-урок-25-дашборды/'},
+    {n:26, title:'Power BI', url:'../lessons/026-урок-26-power-bi/'},
+    {n:27, title:'Statsmodels', url:'../lessons/027-урок-27-statsmodels/'},
+    {n:28, title:'Проверка гипотез', url:'../lessons/028-урок-28-проверка-гипотез/'},
+    {n:29, title:'P-value', url:'../lessons/029-урок-29-p-value/'},
+    {n:30, title:'A/B тестирование', url:'../lessons/030-урок-30-ab-тестирование/'},
+    {n:31, title:'Корреляция и причинность', url:'../lessons/031-урок-31-корреляция-и-причинность/'},
+    {n:32, title:'Теорема Байеса', url:'../lessons/032-урок-32-теорема-байеса/'},
+    {n:33, title:'Бутстреп', url:'../lessons/033-урок-33-бутстреп/'},
+    {n:34, title:'Линейная регрессия', url:'../lessons/034-урок-34-линейная-регрессия/'},
+    {n:35, title:'Логистическая регрессия', url:'../lessons/035-урок-35-логистическая-регрессия/'},
+    {n:36, title:'Метрики классификации', url:'../lessons/036-урок-36-метрики-классификации/'},
+    {n:37, title:'ROC-AUC', url:'../lessons/037-урок-37-roc-auc/'},
+    {n:38, title:'Деревья решений', url:'../lessons/038-урок-38-деревья-решений/'},
+    {n:39, title:'Случайный лес', url:'../lessons/039-урок-39-случайный-лес/'},
+    {n:40, title:'Бэггинг и бустинг', url:'../lessons/040-урок-40-бэггинг-и-бустинг/'},
+    {n:41, title:'Градиентный бустинг', url:'../lessons/041-урок-41-градиентный-бустинг/'},
+    {n:42, title:'XGBoost', url:'../lessons/042-урок-42-xgboost/'},
+    {n:43, title:'CatBoost', url:'../lessons/043-урок-43-catboost/'},
+    {n:44, title:'KMeans', url:'../lessons/044-урок-44-kmeans/'},
+    {n:45, title:'DBSCAN', url:'../lessons/045-урок-45-dbscan/'},
+    {n:46, title:'PCA', url:'../lessons/046-урок-46-pca/'},
+    {n:47, title:'t-SNE', url:'../lessons/047-урок-47-t-sne/'},
+    {n:48, title:'Pandas', url:'../lessons/048-урок-48-pandas/'},
+    {n:49, title:'NumPy', url:'../lessons/049-урок-49-numpy/'},
+    {n:50, title:'Очистка данных', url:'../lessons/050-урок-50-очистка-данных/'},
+    {n:51, title:'Работа с пропусками', url:'../lessons/051-урок-51-работа-с-пропусками/'},
+    {n:52, title:'Работа с выбросами', url:'../lessons/052-урок-52-работа-с-выбросами/'},
+    {n:53, title:'Feature Scaling', url:'../lessons/053-урок-53-feature-scaling/'},
+    {n:54, title:'Выбор признаков', url:'../lessons/054-урок-54-выбор-признаков/'},
+    {n:55, title:'Регуляризация', url:'../lessons/055-урок-55-регуляризация/'},
+    {n:56, title:'Cross-Validation', url:'../lessons/056-урок-56-cross-validation/'},
+    {n:57, title:'Underfitting и Overfitting', url:'../lessons/057-урок-57-underfitting-и-overfitting/'},
+    {n:58, title:'Bias-Variance Tradeoff', url:'../lessons/058-урок-58-bias-variance-tradeoff/'},
+    {n:59, title:'Hyperparameter Tuning', url:'../lessons/059-урок-59-hyperparameter-tuning/'},
+    {n:60, title:'Временные ряды', url:'../lessons/060-урок-60-временные-ряды/'},
+    {n:61, title:'Feature Engineering для временных рядов', url:'../lessons/061-урок-61-feature-engineering-для-временных-рядов/'},
+    {n:62, title:'ARIMA', url:'../lessons/062-урок-62-arima/'},
+    {n:63, title:'Prophet', url:'../lessons/063-урок-63-prophet/'},
+    {n:64, title:'Статистика и A/B тесты в ML', url:'../lessons/064-урок-64-статистика-и-ab-тесты-в-ml/'},
+    {n:65, title:'Бизнес-метрики в ML', url:'../lessons/065-урок-65-бизнес-метрики-в-ml/'},
+    {n:66, title:'От ML к бизнес-решению', url:'../lessons/066-урок-66-от-ml-к-бизнес-решению/'},
+    {n:67, title:'Работа с категориальными признаками', url:'../lessons/067-урок-67-работа-с-категориальными-признаками/'},
+    {n:68, title:'Работа с текстом', url:'../lessons/068-урок-68-работа-с-текстом/'},
+    {n:69, title:'TF-IDF', url:'../lessons/069-урок-69-tf-idf/'},
+    {n:70, title:'Word Embeddings', url:'../lessons/070-урок-70-word-embeddings/'},
+  ];
+
+  const results = document.createElement('div');
+  results.style.cssText = 'position:absolute;top:100%;right:0;min-width:320px;max-height:400px;overflow-y:auto;background:rgba(20,20,30,.95);border:1px solid rgba(255,255,255,.1);border-radius:10px;margin-top:4px;display:none;z-index:200';
+  const wrap = document.querySelector('.search-wrap');
+  if(wrap) wrap.style.position = 'relative';
+  if(wrap) wrap.appendChild(results);
+
+  const input = document.getElementById('searchInput');
+  if(input){
+    input.addEventListener('input', function(){
+      const q = this.value.toLowerCase().trim();
+      if(q.length < 1){results.style.display='none';return;}
+      const matches = lessons.filter(function(l){
+        return l.title.toLowerCase().includes(q) ||
+          ('урок '+l.n).includes(q) ||
+          l.n.toString() === q
+      });
+      if(matches.length===0){
+        results.innerHTML='<div style="padding:12px 16px;color:#585870;font-size:.82rem">Ничего не найдено</div>';
+      } else {
+        results.innerHTML=matches.slice(0,15).map(function(l){
+          return '<a href="'+l.url+'" style="display:block;padding:10px 16px;color:#e8e8f0;text-decoration:none;font-size:.82rem;border-bottom:1px solid rgba(255,255,255,.04)">' +
+            '<span style="color:#3481B8;font-weight:600">Урок '+l.n+'</span> — '+l.title+
+          '</a>';
+        }).join('')+'</div>';
+      }
+      results.style.display='block';
+    });
+
+    document.addEventListener('click', function(e){
+      if(!input.parentNode.contains(e.target)) results.style.display='none';
+    });
+
+    input.addEventListener('keydown', function(e){
+      if(e.key==='Escape') results.style.display='none';
+      if(e.key==='Enter'){
+        const first = results.querySelector('a');
+        if(first) window.location.href=first.href;
+      }
+    });
+  }
+</script>
 </body>
 </html>
