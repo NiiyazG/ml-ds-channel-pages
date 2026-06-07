@@ -36,7 +36,9 @@
 
   document.head.appendChild(style);
 
-  // Lesson navigation links
+  // Lesson navigation links (only on lesson pages)
+  var p = window.location.pathname;
+  if(!p.includes('/lessons/')) return;
   var navBlock = document.createElement('div');
   navBlock.style.cssText = 'max-width:1200px;margin:40px auto 0;padding:20px 24px 0;';
   navBlock.innerHTML = '<div style="font-size:.85rem;font-weight:700;color:#e8e8f0;margin-bottom:12px">📚 Все уроки курса</div>' +
