@@ -4,7 +4,7 @@
 
   var nav = document.createElement('nav');
   nav.className = 'top-nav top-nav-injected';
-  nav.innerHTML = '<div class="logo">ML по-человечески</div>' +
+  nav.innerHTML = '<div class="logo">ML и анализ данных по-человечески</div>' +
     '<div class="nav-links">' +
     '<div class="search-wrap">' +
     '<span class="search-icon">🔍</span>' +
