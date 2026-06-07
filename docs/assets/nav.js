@@ -6,6 +6,7 @@
   nav.className = 'top-nav top-nav-injected';
   nav.innerHTML = '<div class="logo">ML и анализ данных по-человечески</div>' +
     '<div class="nav-links">' +
+    '<a href="../../lessons/001-тема-1-что-такое-анализ-данных-и-зачем-он-нужен/">Уроки</a>' +
     '<a href="../../">Главная</a>' +
     '<a href="../../profile/">Обо мне</a>' +
     '<a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">Telegram-канал</a>' +
