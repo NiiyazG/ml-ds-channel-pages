@@ -11,7 +11,7 @@
     '<input type="text" id="searchInput" placeholder="Поиск уроков..." autocomplete="off">' +
     '</div>' +
     '<a href="../../" class="active">Главная</a>' +
-    '<a href="../../profile/">Профиль</a>' +
+    '<a href="../../profile/">Обо мне</a>' +
     '<a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">✈️ Telegram</a>' +
     '</div>';
 
