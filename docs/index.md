@@ -1,3 +1,5 @@
+![ML & DS](images/profile/hero.jpg)
+
 # © Гарипов Нияз Варисович
 
 https://t.me/ML_DS_one
