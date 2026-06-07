@@ -6,13 +6,13 @@
   nav.className = 'top-nav top-nav-injected';
   nav.innerHTML = '<div class="logo">ML и анализ данных по-человечески</div>' +
     '<div class="nav-links">' +
+    '<a href="../../">Главная</a>' +
+    '<a href="../../profile/">Обо мне</a>' +
+    '<a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">Телеграм-канал</a>' +
+    '</div>' +
     '<div class="search-wrap">' +
     '<span class="search-icon">🔍</span>' +
     '<input type="text" id="searchInput" placeholder="Поиск уроков..." autocomplete="off">' +
-    '</div>' +
-    '<a href="../../" class="active">Главная</a>' +
-    '<a href="../../profile/">Обо мне</a>' +
-    '<a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">Телеграм-канал</a>' +
     '</div>';
 
   var first = document.body.firstChild;
@@ -28,7 +28,8 @@
     '.top-nav-injected .nav-links a:hover,' +
     '.top-nav-injected .nav-links .tg-btn:hover{color:#e8e8f0;background:rgba(255,255,255,.05)}' +
     '.top-nav-injected .nav-links a.active{color:#fff;background:rgba(21,72,137,.15)}' +
-    '.top-nav-injected .search-wrap{position:relative;margin-right:8px}' +
+    '.top-nav-injected .nav-links{margin-left:24px}' +
+    '.top-nav-injected .search-wrap{position:relative;margin-left:auto}' +
     '.top-nav-injected .search-wrap input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px 6px 32px;font-size:.78rem;color:#e8e8f0;width:160px;outline:none;transition:all .2s;font-family:inherit}' +
     '.top-nav-injected .search-wrap input::placeholder{color:#585870}' +
     '.top-nav-injected .search-wrap input:focus{border-color:rgba(52,129,184,.4);background:rgba(255,255,255,.08);width:200px}' +

@@ -106,7 +106,8 @@
       background-clip:text;
       letter-spacing:-.03em;
     }
-    .top-nav .nav-links{display:flex;gap:8px;align-items:center}
+    .top-nav .nav-links{display:flex;gap:8px;align-items:center;margin-left:24px}
+    .top-nav .search-wrap{margin-left:auto}
     .top-nav .nav-links a,
     .top-nav .nav-links .tg-btn{
       color:#9898b0;text-decoration:none;font-size:.85rem;
@@ -122,7 +123,6 @@
     }
     .top-nav .search-wrap{
       position:relative;
-      margin-right:8px;
     }
     .top-nav .search-wrap input{
       background:rgba(255,255,255,.06);
@@ -297,13 +297,13 @@
   <nav class="top-nav">
       <div class="logo">ML и анализ данных по-человечески</div>
       <div class="nav-links">
-        <div class="search-wrap">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="searchInput" placeholder="Поиск уроков..." autocomplete="off">
-        </div>
         <a href="#">Главная</a>
         <a href="profile/">Обо мне</a>
         <a href="https://t.me/ML_DS_one" class="tg-btn" target="_blank">Телеграм-канал</a>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Поиск уроков..." autocomplete="off">
       </div>
     </nav>
   </div>
